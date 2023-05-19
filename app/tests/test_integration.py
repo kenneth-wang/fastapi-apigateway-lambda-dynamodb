@@ -24,7 +24,7 @@ def setup_test_data(item_repository):
         category="Stationary",
         price=5.5,
         created_dt="2022-01-01 10:00:00",
-        last_updated_at="2022-01-01 10:00:00",
+        last_updated_dt="2022-01-01 10:00:00",
     )
     item_repository.create_item(item1)
 
@@ -34,7 +34,7 @@ def setup_test_data(item_repository):
         category="Gift",
         price=7.5,
         created_dt="2022-01-01 10:00:00",
-        last_updated_at="2022-01-01 10:00:00",
+        last_updated_dt="2022-01-01 10:00:00",
     )
     item_repository.create_item(item2)
 

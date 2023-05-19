@@ -12,7 +12,7 @@ def test_create_item():
         category="Stationary",
         price=5.5,
         created_dt="2022-01-01",
-        last_updated_at="2022-01-01",
+        last_updated_dt="2022-01-01",
     )
 
     created_item = item_repository.create_item(item)
@@ -22,7 +22,7 @@ def test_create_item():
     assert created_item.category == item.category
     assert created_item.price == item.price
     assert created_item.created_dt == item.created_dt
-    assert created_item.last_updated_at == item.last_updated_at
+    assert created_item.last_updated_dt == item.last_updated_dt
 
 
 def test_get_items_by_date_range():

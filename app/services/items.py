@@ -18,7 +18,7 @@ class ItemService:
             **{
                 "id": uuid.uuid4(),
                 "created_dt": now,
-                "last_updated_at": now,
+                "last_updated_dt": now,
                 **req.dict(),
             }
         )

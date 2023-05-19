@@ -8,4 +8,4 @@ class CreateItemRequest(BaseModel):
 class Item(CreateItemRequest):
     id: int
     created_dt: str
-    last_updated_at: str
+    last_updated_dt: str
