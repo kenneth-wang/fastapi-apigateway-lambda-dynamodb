@@ -1,0 +1,17 @@
+FROM python:3.9
+
+RUN mkdir /task
+
+WORKDIR /task
+
+# For Pytest to work well in remote explorer
+RUN mkdir -p .vscode
+RUN echo '{"python.defaultInterpreterPath": "/usr/local/bin/python", "python.testing.pytestArgs": ["-s"]}' >> ./.vscode/settings.json
+
+COPY Pipfile Pipfile.lock ./
+
+RUN pip install pipenv && pipenv install --system --deploy
+
+EXPOSE 8000
+
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]

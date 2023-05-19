@@ -1,0 +1,27 @@
+version: '3.8'
+services:
+  app-test:
+    build:
+      context: .
+      dockerfile: Dockerfile.test
+    ports:
+      - 8003:8000
+    environment:
+      - DYNAMODB_ENDPOINT=http://dynamodb-test:8000
+      - AWS_REGION=ap-southeast-1
+      - AWS_ACCESS_KEY_ID=dummy
+      - AWS_SECRET_ACCESS_KEY=dummy
+    depends_on:
+      - dynamodb-test
+    volumes:
+      - "./:/task/"
+  dynamodb-test:
+    image: amazon/dynamodb-local:latest
+    ports:
+      - 8002:8000
+    volumes:
+      - dynamodb-data-test:/home/root/data
+    command: "-jar DynamoDBLocal.jar -sharedDb -dbPath /home/root/data"
+    user: root
+volumes:
+  dynamodb-data-test:
