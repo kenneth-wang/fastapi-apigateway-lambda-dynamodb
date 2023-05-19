@@ -1,0 +1,33 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+
+Resources:
+  MyFastAPIApp:
+    Type: AWS::Serverless::Function
+    Properties:
+      PackageType: Image
+      ImageUri: my-fastapi-app:latest
+      Timeout: 10
+      Events:
+        MyApi:
+          Type: Api
+          Properties:
+            Path: /{proxy+}
+            Method: ANY
+          Port: 3000
+      Environment:
+        Variables:
+          DYNAMODB_ENDPOINT: http://dynamodb:8000
+          AWS_REGION: ap-southeast-1
+          AWS_ACCESS_KEY_ID: dummy
+          AWS_SECRET_ACCESS_KEY: dummy
+
+  MyApi:
+    Type: AWS::Serverless::Api
+    Properties:
+      StageName: Prod
+      DefinitionBody:
+        'Fn::Transform':
+          Name: 'AWS::Include'
+          Parameters:
+            Location: 'openapi.yaml'
