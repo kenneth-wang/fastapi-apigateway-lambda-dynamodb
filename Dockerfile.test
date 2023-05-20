@@ -6,7 +6,7 @@ WORKDIR /task
 
 # For Pytest to work well in remote explorer
 RUN mkdir -p .vscode
-RUN echo '{"python.defaultInterpreterPath": "/usr/local/bin/python", "python.testing.pytestArgs": ["-s"]}' >> ./.vscode/settings.json
+COPY .vscode/remote-settings.json ./.vscode/settings.json
 
 COPY Pipfile Pipfile.lock ./
 

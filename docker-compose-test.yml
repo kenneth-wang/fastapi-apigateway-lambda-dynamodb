@@ -14,7 +14,7 @@ services:
     depends_on:
       - dynamodb-test
     volumes:
-      - "./:/task/"
+      - "./app:/task/app"
   dynamodb-test:
     image: amazon/dynamodb-local:latest
     ports:

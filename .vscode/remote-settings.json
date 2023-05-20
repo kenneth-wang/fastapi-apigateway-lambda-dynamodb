@@ -1,0 +1,12 @@
+{
+    "editor.rulers": [88],
+    "python.analysis.autoImportCompletions": true,
+    "python.analysis.extraPaths": ["."],
+    "python.analysis.indexing": true,
+    "python.analysis.packageIndexDepths": [
+        { "name": "", "depth": 3, "includeAllSymbols": true }
+    ],
+    "editor.formatOnSave": true,
+    "python.defaultInterpreterPath": "/usr/local/bin/python",
+    "python.testing.pytestArgs": ["-s"]
+}
