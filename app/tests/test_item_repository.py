@@ -11,12 +11,12 @@ item_repository = ItemRepository()
 def test_get_item(setup_test_data):
     retrieved_item = item_repository.get_item(1)
 
-    assert retrieved_item.id == item.id
-    assert retrieved_item.name == item.name
-    assert retrieved_item.category == item.category
-    assert retrieved_item.price == item.price
-    assert retrieved_item.created_dt == item.created_dt
-    assert retrieved_item.last_updated_dt == item.last_updated_dt
+    assert retrieved_item.id == 1
+    assert retrieved_item.name == "Item 1"
+    assert retrieved_item.category == "Stationary"
+    assert retrieved_item.price == 5.5
+    assert retrieved_item.created_dt == "2022-01-01 10:00:00"
+    assert retrieved_item.last_updated_dt == "2022-01-01 10:00:00"
 
 
 @freeze_time(datetime(year=2022, month=6, day=15, hour=0, minute=0, second=0))
