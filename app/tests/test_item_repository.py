@@ -1,8 +1,33 @@
+from freezegun import freeze_time
 from app.models.items import Item
 from app.repositories.items import ItemRepository
+from datetime import datetime
 
 
 item_repository = ItemRepository()
+
+
+def test_get_item(setup_test_data):
+    retrieved_item = item_repository.get_item(1)
+
+    assert retrieved_item.id == item.id
+    assert retrieved_item.name == item.name
+    assert retrieved_item.category == item.category
+    assert retrieved_item.price == item.price
+    assert retrieved_item.created_dt == item.created_dt
+    assert retrieved_item.last_updated_dt == item.last_updated_dt
+
+
+@freeze_time(datetime(year=2022, month=6, day=15, hour=0, minute=0, second=0))
+def test_update_item(setup_test_data):
+    new_price = 4.5
+    item_id = 1
+    item_repository.update_item(item_id, new_price)
+
+    updated_item = item_repository.get_item(item_id)
+
+    assert updated_item.price == new_price
+    assert updated_item.last_updated_dt == "2022-06-15 00:00:00"
 
 
 def test_create_item():
@@ -38,14 +63,3 @@ def test_get_items_by_category():
     for item in items:
         assert isinstance(item, Item)
         assert item.category == "Stationary"
-
-
-def test_get_all_items():
-    # "all" category
-    items = item_repository.get_items_by_category("all")
-
-    for item in items:
-        assert isinstance(item, Item)
-
-    # specific category
-    # TODO

@@ -18,5 +18,6 @@ mangum = "*"
 pydantic = {extras = ["email"], version = "*"}
 
 [dev-packages]
+freezegun = "*"
 mypy = "*"
 flake8 = "*"
