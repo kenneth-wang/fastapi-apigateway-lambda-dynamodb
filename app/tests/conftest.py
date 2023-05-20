@@ -1,7 +1,8 @@
 import pytest
-from app.models.items import Item
 
+from app.models.items import Item
 from app.repositories.items import ItemRepository
+
 
 @pytest.fixture()
 def item_repository():

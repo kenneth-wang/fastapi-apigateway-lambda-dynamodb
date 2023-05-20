@@ -6,5 +6,10 @@
     "python.analysis.packageIndexDepths": [
         { "name": "", "depth": 3, "includeAllSymbols": true }
     ],
-    "editor.formatOnSave": true
+    "editor.defaultFormatter": "ms-python.black-formatter",
+    "editor.codeActionsOnSave": {
+        "source.organizeImports": true
+    },
+    "editor.formatOnSave": true,
+    "isort.args": ["--profile", "black"],
 }

@@ -1,7 +1,7 @@
 from fastapi.testclient import TestClient
+
 from app.main import app
 from app.models.items import CreateItemRequest
-
 
 client = TestClient(app)
 
@@ -33,21 +33,13 @@ def test_get_items_by_category(setup_test_data):
     assert data["items"][0] == {
         "category": "Stationary",
         "total_price": 5.5,
-        "count": 1
+        "count": 1,
     }
-    assert data["items"][1] == {
-        "category": "Gift",
-        "total_price": 20,
-        "count": 2
-    }
+    assert data["items"][1] == {"category": "Gift", "total_price": 20, "count": 2}
 
     # single category
     response = client.get("/items/statistics?category=Gift")
     data = response.json()
     assert response.status_code == 200
     assert len(data["items"]) == 1
-    assert data["items"][0] == {
-        "category": "Gift",
-        "total_price": 20,
-        "count": 2
-    }
+    assert data["items"][0] == {"category": "Gift", "total_price": 20, "count": 2}

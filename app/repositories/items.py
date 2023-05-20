@@ -1,8 +1,10 @@
 import os
 from datetime import datetime
-from pynamodb.models import Model
-from pynamodb.attributes import UnicodeAttribute, NumberAttribute
 from typing import List
+
+from pynamodb.attributes import NumberAttribute, UnicodeAttribute
+from pynamodb.models import Model
+
 from app.models.items import Item
 from app.utils.constants import DATETIME_STR_FORMAT
 
@@ -38,7 +40,7 @@ class ItemRepository:
             category=item.category,
             price=item.price,
             created_dt=item.created_dt,
-            last_updated_dt=item.last_updated_dt
+            last_updated_dt=item.last_updated_dt,
         )
 
     def update_item(self, id: int, price: float):

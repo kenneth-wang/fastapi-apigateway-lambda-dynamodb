@@ -6,7 +6,12 @@
     "python.analysis.packageIndexDepths": [
         { "name": "", "depth": 3, "includeAllSymbols": true }
     ],
-    "editor.formatOnSave": true,
     "python.defaultInterpreterPath": "/usr/local/bin/python",
-    "python.testing.pytestArgs": ["-s"]
+    "python.testing.pytestArgs": ["-s"],
+    "editor.defaultFormatter": "ms-python.black-formatter",
+    "editor.codeActionsOnSave": {
+        "source.organizeImports": true
+    },
+    "editor.formatOnSave": true,
+    "isort.args": ["--profile", "black"]
 }

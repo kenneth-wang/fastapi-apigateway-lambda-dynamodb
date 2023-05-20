@@ -1,11 +1,16 @@
+import uuid
 from collections import defaultdict
 from datetime import datetime
 from typing import Any, Dict
-from app.models.items import GetCategoryStats, Item, GetItemsByDateRange, ItemId
-from app.models.items import CreateItemRequest
-from app.repositories.items import ItemRepository
-import uuid
 
+from app.models.items import (
+    CreateItemRequest,
+    GetCategoryStats,
+    GetItemsByDateRange,
+    Item,
+    ItemId,
+)
+from app.repositories.items import ItemRepository
 from app.utils.constants import DATETIME_STR_FORMAT
 
 
@@ -36,7 +41,6 @@ class ItemService:
         )
         inserted_item = self.repository.create_item(item)
         return ItemId(id=inserted_item.id)
-
 
     def get_items_by_date_range(self, dt_from: str, dt_to: str) -> GetItemsByDateRange:
         items = self.repository.get_items_by_date_range(dt_from, dt_to)
